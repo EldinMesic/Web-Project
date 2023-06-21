@@ -1,0 +1,109 @@
+/* CSS variables */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --teriary-color: yellow;
+    --font-size-base: 16px;
+    --font-family-base: Arial, sans-serif;
+}
+
+/* Global styles */
+html {
+    height: 100%;
+}
+
+body {
+    font-size: var(--font-size-base);
+    font-family: var(--font-family-base);
+    color: #333;
+    background: rgb(51,51,51);
+    background: linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(102,102,102,1) 50%, rgba(51,51,51,1) 100%);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-top: 0;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+
+.error {
+    background: #F2DEDE;
+    color: #A94442;
+    padding: 1em;
+    width: 60%;
+    border-radius: 0.5em;
+    margin: 1em auto;
+}
+.message {
+    background: #def2e0;
+    color: #42a958;
+    padding: 1em;
+    width: 60%;
+    border-radius: 0.5em;
+    margin: 1em auto;
+}
+
+input {
+	display: block;
+	border: 2px solid #ccc;
+    width: 90%;
+	padding: 1em;
+	margin: 10px auto;
+	border-radius: 5px;
+}
+label {
+	color: #888;
+	font-size: 18px;
+	padding: 1em;
+}
+
+
+/* Nav bar */
+.my-navbar{
+    height: 20%;
+    background: rgb(240,64,55);
+    background: linear-gradient(0deg, rgba(182,0,0,1) 10%, rgba(240,64,55,1) 100%);
+}
+.my-navbar span{
+    margin: 2em;
+}
+
+.my-navbar img{
+    margin-top: 1em;
+    margin-right: 4em;
+    margin-left: 2em;
+    height: 70%;
+}
+
+/* Container */
+.main-container{
+    background-color: #fffcca;
+    padding: 3em 0;
+    min-height: 70%;
+    height: fit-content;
+    margin:auto 10%;
+    
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    #titleImg{
+        display: none;
+    }
+    .my-navbar{
+        text-align: center;
+    }
+
+}
+

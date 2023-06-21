@@ -4,10 +4,6 @@ if(session_status() !== PHP_SESSION_ACTIVE){
   exit();
 }
 
-include_once 'utilities/constants.php';
-
-
-
 class DatabaseManager{
     protected $connection;
 
