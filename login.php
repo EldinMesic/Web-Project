@@ -1,51 +1,26 @@
 <?php 
 session_start(); 
-include "db_conn.php";
 
-if (isset($_POST['k_ime']) && isset($_POST['lozinka'])) {
+require_once "database/db_manager.php";
+require_once "utilities/functions.php";
 
-	function validate($data){
-     $data = trim($data);
-	   $data = stripslashes($data);
-	   $data = htmlspecialchars($data);
-	   return $data;
-	}
+if (isset($_POST['u_name']) && isset($_POST['u_pass'])) {
 
-	$uname = validate($_POST['k_ime']);
-	$pass = validate($_POST['lozinka']);
+	$uname = validateInput($_POST['u_name']);
+	$pass = validateInput($_POST['u_pass']);
 
 	if (empty($uname)) {
-		header("Location: index.php?error=Niste unjeli korisničko ime");
+		header("Location: index.php?error=Please enter username");
 	    exit();
 	}else if(empty($pass)){
-        header("Location: index.php?error=Niste unjeli lozinku");
+        header("Location: index.php?error=Please enter password");
 	    exit();
 	}else{
-		$sql = "SELECT * FROM korisnici WHERE user_name=?";
-		$stmt = $spoj->prepare($sql);
+		$response = $database->loginUser($uname, $pass);
+		
+		header($response);
+		exit();
 
-		$stmt->bind_param("s", $uname);
-		$stmt->execute();
-		$stmt->store_result();
-		$stmt->bind_result($db_userid, $db_name, $db_username, $db_paswordHASH);
-
-		if ($stmt->num_rows === 1) {
-			$stmt->fetch();
-			if (password_verify($pass, $db_paswordHASH)) {
-				$_SESSION['id'] = $db_userid;
-				$_SESSION['user_name'] = $db_username;
-				$_SESSION['name'] = $db_name;
-				header("Location: home.php");
-				exit();
-			}else{
-				header("Location: index.php?error=Neispravna lozinka");
-				exit();
-			}
-		}else{
-			header("Location: index.php?error=Neispravno korisničko ime");
-			exit();
-		}
-		$spoj->close();
 	}
 	
 }else{

@@ -3,10 +3,6 @@ session_start();
 
 require_once "database/db_manager.php";
 
-if(isset($_SESSION['user'])){
-    //header("Location: home.php");
-    //exit();
-}
 
 ?>
 
@@ -40,28 +36,30 @@ if(isset($_SESSION['user'])){
             }
         ?>
 
-        <form action="login.php" method="post" class="form">
-            <h2>Login</h2>
+        <form action="register.php" method="post" class="form">
+            <h2>Register</h2>
             <br>
 
             <div class="info-container">
-                <label class="label">Username or Email Address</label>
-                <input type="text" name="u_name" placeholder="Enter Username or Email Address" class="input"><br>
+                <label class="label">Username</label>
+                <input type="text" name="u_name" placeholder="example125" minlength="3" class="input"><br>
+
+				<label class="label">Email</label>
+                <input type="email" name="u_email" placeholder="example@example.com" class="input"><br>
 
                 <label class="login">Password</label>
-                <input type="password" name="u_pass" placeholder="Enter Password" class="input"><br>
+                <input type="password" name="u_pass" placeholder="pass1234" minlength="6" class="input"><br>
 
-                <div>
-                    <a href="forgotPassword.php">Forgot your password?</a>
-                </div>
+				<label class="login">Confirm Password</label>
+                <input type="password" name="u_pass_confirm" placeholder="pass1234" minlength="6" class="input"><br>
                 
                 <div class="button-container">
-                    <button type="submit">Login</button>
+                    <button type="submit">Register</button>
                 </div>
             </div>
 
             <div class="signup-container">
-                <a href="registration.php">Don't have an account?<br>SIGN UP</a>
+                <a href="login.php">Already have an account?<br>LOGIN</a>
             </div>
 
         </form>

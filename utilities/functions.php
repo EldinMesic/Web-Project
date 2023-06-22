@@ -1,4 +1,15 @@
 <?php
+
+function validateInput($data){
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+
+
+
 function getCartItems(){
     if(isset($_SESSION['cart'])){
         $count = 0;
