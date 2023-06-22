@@ -1,5 +1,8 @@
 <?php
 session_start();
+session_unset();
+session_destroy();
+session_start();
 
 require_once "database/db_manager.php";
 
@@ -12,13 +15,25 @@ require_once "database/db_manager.php";
 	<title>Pokopy</title>
 	<link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/index.css">
+    <script src="script/script.js"></script>
 </head>
 <body>
 
+    <div class="background"></div>
 
     <div class="my-navbar">
-      <img src="images/PokeBuyLogo.png" />
+      <img src="images/pokopyLogo.png" />
       <img src="images/title.png" id="titleImg"/>
+    </div>
+    <div class="navbar">
+        <div class="main-pages">
+            <a href="home.php">Home</a>
+            <a href="pokedex.php">Pokedex</a>
+            <a href="explore.php">Explore</a>
+        </div>
+        <div class="account-pages">
+            <a href="index.php">Log In</a>
+        </div>
     </div>
 
 

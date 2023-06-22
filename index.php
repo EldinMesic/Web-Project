@@ -16,15 +16,28 @@ if(isset($_SESSION['user'])){
 	<title>Pokopy</title>
 	<link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/index.css">
+    <script src="script/script.js"></script>
 </head>
 <body>
 
 
-    <div class="my-navbar">
-      <img src="images/PokeBuyLogo.png" />
-      <img src="images/title.png" id="titleImg"/>
-    </div>
 
+    <div class="background"></div>
+
+    <div class="my-navbar">
+        <img src="images/pokopyLogo.png" />
+        <img src="images/title.png" id="titleImg"/>
+    </div>
+    <div class="navbar">
+    <div class="main-pages">
+            <a href="home.php">Home</a>
+            <a href="pokedex.php">Pokedex</a>
+            <a href="explore.php">Explore</a>
+        </div>
+        <div class="account-pages">
+            <a href="registration.php">Register</a>
+        </div>
+    </div>
 
     
 
