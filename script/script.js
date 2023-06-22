@@ -11,7 +11,6 @@ window.onscroll = function() {
 
 
 
-
 function createPokemon(item){
     let itemElement = document.createElement('div');
         itemElement.classList.add('item');

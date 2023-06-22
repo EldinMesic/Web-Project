@@ -35,7 +35,7 @@ if(isset($_SESSION['user'])){
             <a href="explore.php">Explore</a>
         </div>
         <div class="account-pages">
-            <a href="registration.php">Register</a>
+            <a href="registration.php">Sign Up</a>
         </div>
     </div>
 
