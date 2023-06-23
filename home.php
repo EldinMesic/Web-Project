@@ -5,7 +5,10 @@ if(!isset($_SESSION['user'])){
     header("Location: index.php?error=Please Log in.");
     exit();
 }
-
+if(!$_SESSION['user']['hasFinishedTutorial']){
+    header("Location: tutorial/tutorial.php");
+    exit();
+}
 
 ?>
 

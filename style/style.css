@@ -1,3 +1,10 @@
+@font-face {
+    font-family: pokemonRed;
+    src: url(../fonts/pokemonRed.woff);
+}
+
+
+
 /* CSS variables */
 :root {
     --primary-color: #007bff;

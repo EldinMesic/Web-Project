@@ -1,0 +1,154 @@
+.pokemon-selection-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding-top:2%;
+}
+
+.profesor-oak-container{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 20%;
+    text-align: start;
+    justify-content:center;
+}
+
+#prof-oak-img{
+    width: 15%;
+    margin:2em
+}
+
+#speech-bubble{
+    margin-top: 4em;
+    width: 50%;
+    background-image: url(../images/speechBubble.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: contain;
+}
+#text-bubble {
+    align-items: center;
+    justify-content: center;
+    font-family: pokemonRed;
+    margin: 0.5em;
+    font-size: 3em;
+}
+#text-bubble p{
+    margin-top: -1%;
+}
+
+
+.pokemon-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.pokemon-container img{
+    opacity: 0;
+    padding: 5%;
+    width: 20%;
+    transition: opacity 1.5s;
+}
+.pokemon-container img:hover{
+    padding: 0%;
+    width: 30%;
+    background: white;
+    background: radial-gradient(circle, white 10%, lightgray 50%, rgb(0,0,0,0) 80%);
+    border-radius: 40%;
+}
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal.show-modal {
+    display: block;
+    opacity: 1;
+}
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 2em;
+    border: 1px solid #ccc;
+    width: 40%;
+}
+.modal-content div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.modal-content div button{
+    margin:1em
+}
+.modal-content div form button{
+    margin:1em
+}
+
+button {
+	background: var(--primary-color);
+	padding: 0.6em 5em;
+	color: #fff;
+	border-radius: 2em;
+	border: none;
+    font-size: large;
+    align-items: center;
+}
+button:hover{
+	opacity: .7;
+    cursor: pointer;
+}
+
+
+
+
+.close {
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#yes-btn{
+    background-color: limegreen;
+}
+#no-btn{
+    background-color: red;
+}
+
+
+@media screen and (max-width: 768px) {
+    .profesor-oak-container, .modal-content div{
+        flex-direction: column;
+        
+    }
+    #prof-oak-img{
+        margin: auto;
+        width: 30%;
+    }
+    #speech-bubble{
+        margin-top: 1em;
+        width: 100%;
+        padding-bottom: 4em;
+    }
+    #text-bubble{
+        padding: 3%; 
+        font-size: 2.5em;
+    }
+    #text-bubble p{
+        margin-top: -5%;
+    }
+
+}

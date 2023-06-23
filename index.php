@@ -3,9 +3,11 @@ session_start();
 
 require_once "database/db_manager.php";
 
+
+
 if(isset($_SESSION['user'])){
-    //header("Location: home.php");
-    //exit();
+    header("Location: home.php");
+    exit();
 }
 
 ?>

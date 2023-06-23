@@ -1,5 +1,4 @@
 window.onscroll = function() {
-    console.log(window.scrollY);
     if(window.scrollY >= 130){
         document.querySelector(".navbar").style.top = 0+"px";
     }else{

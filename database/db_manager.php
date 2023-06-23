@@ -1,11 +1,15 @@
 <?php
+
+$absPath = "http://localhost/Web-Project/";
+
 if(session_status() !== PHP_SESSION_ACTIVE){
-  header("Location: index.php?error=Invalid Session");
+  header("Location: {$absPath}index.php?error=Invalid Session");
   exit();
 }
 
 class DatabaseManager{
     protected $connection;
+    protected $absPath = "http://localhost/Web-Project/";
 
 	public function __construct($dbhost = 'localhost', $dbuser = 'root', $dbpass = '', $dbname = 'pokebuy') {
 		$this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -72,12 +76,17 @@ class DatabaseManager{
 
 			if(password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user;
-				return "Location: home.php";
+        if($user['hasFinishedTutorial']){
+          return "Location:  {$this->absPath}home.php";
+        }else{
+          return "Location:  {$this->absPath}tutorial/tutorial.php#navbar";
+        }
+				
 			}else{
-				return "Location: index.php?error=Invalid password. The password you entered is incorrect.";
+				return "Location:  {$this->absPath}index.php?error=Invalid password. The password you entered is incorrect.";
 			}
 		}else{
-			return "Location: index.php?error=User does not exist. Please sign up to create an account.";
+			return "Location:  {$this->absPath}index.php?error=User does not exist. Please sign up to create an account.";
 		}
 
   }
@@ -91,10 +100,10 @@ class DatabaseManager{
 
     
     if($this->isEmailRegistered($email)){
-      return "Location: registration.php?error=Sorry, the email you entered is already registered. Please try using a different email or login with your existing account.";
+      return "Location:  {$this->absPath}registration.php?error=Sorry, the email you entered is already registered. Please try using a different email or login with your existing account.";
     }
     if($this->isUsernameRegistered($username)){
-      return "Location: registration.php?error=Sorry, this username is taken. Please try using a different username.";
+      return "Location:  {$this->absPath}registration.php?error=Sorry, this username is taken. Please try using a different username.";
     }
 
 
@@ -105,7 +114,7 @@ class DatabaseManager{
     if($result){
       return $this->loginUser($username, $password);
     }else{
-			return "Location: registration.php?error=Something went wrong. Please try again.";
+			return "Location:  {$this->absPath}registration.php?error=Something went wrong. Please try again.";
 		}
 
   }
@@ -133,8 +142,63 @@ class DatabaseManager{
     return $result->num_rows===1;
 
   }
+  public function doesUserExist($id){
+    $id = $this->connection->real_escape_string($id);
+
+    $sql = "SELECT *
+            FROM users
+            WHERE id='$id'";
+    $result = $this->connection->query($sql);
+
+    return $result->num_rows===1;
+
+  }
 
   
+
+  public function finishTutorial($userID, $pokemonID){
+      if(!$this->doesUserExist($userID)){
+        header("Location:{$this->absPath}index.php");
+        exit();
+      }
+
+      
+      if(!$this->catchPokemon($userID, $pokemonID, 0)){
+        header("Location: {$this->absPath}tutorial/tutorial.php?error=Something went wrong with Pokemon selection");
+        exit();
+      }
+
+      $sql = "UPDATE users
+              SET hasFinishedTutorial = 1
+              WHERE id=$userID";
+      $result = $this->connection->query($sql);
+
+      if(!$result){
+        header("Location: {$this->absPath}tutorial/tutorial.php?error=Something went wrong with the tutorial");
+        exit();
+      }
+
+
+      if(!isset($_SESSION['user'])){
+        header("Location: {$this->absPath}index.php?error=Session Expired, please Log in again");
+        exit();
+      }
+
+      $_SESSION['user']['hasFinishedTutorial'] = 1;
+
+
+      header("Location: {$this->absPath}home.php");
+      exit();
+
+  }
+
+  public function catchPokemon($userID, $pokemonID, $isShiny){  
+    $sql = "INSERT INTO user_pokemon (userID, pokemonID, isShiny) 
+            VALUES ($userID, $pokemonID, $isShiny)";
+    $result = $this->connection->query($sql);
+
+    return $result;
+  }
 
 
 
@@ -142,6 +206,5 @@ class DatabaseManager{
 
 
 $database = new DatabaseManager();
-
 
 ?>
