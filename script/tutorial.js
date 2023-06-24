@@ -45,12 +45,12 @@ function startSpeech(username){
 
     text.push(
         `Hello, there ${username}! Glad to meet you!`,
-        "Welcome to the world of Pokémon! My name is Oak.",
-        "This world is inhabited by creatures called Pokemon.",
+        "Welcome to the Pokopy Website! My name is Professor Oak.",
+        "This website is inhabited by creatures called Pokémon.",
         "For some people, Pokémon are pets. Other use them for battling.",
         "As for myself, I study Pokémon as a profession.",
         "But first, tell me a little about yourself.",
-        "Now tell me. Are you a boy? Or are you a girl?",
+        "Are you a boy? Or are you a girl?",
         "What? You can't answer because the developer was lazy? Absurd!",
         "Well, anyways.",
         "Please select your starting Pokémon. It will be your partner through the journey."

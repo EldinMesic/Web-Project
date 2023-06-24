@@ -156,7 +156,7 @@ label {
     color: black;
 }
 
-.account-pages span{
+#username-text{
     cursor: default;
     float:right;
     display: block;
@@ -164,6 +164,14 @@ label {
     text-align: center;
     padding: 15px;
     text-decoration: underline;
+}
+#stamina-text{
+    cursor: pointer;
+    float:right;
+    display: block;
+    color: lightgrey;
+    text-align: center;
+    padding: 15px;
 }
 
 
@@ -181,6 +189,33 @@ label {
     cursor: default;
 }
 
+
+
+
+.tooltip{
+    position: relative;
+    float: right;
+}
+.tooltip .stamina-info{
+    visibility: hidden;
+    opacity:0;
+    width: 15em;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    margin-top:3em;
+    padding: 1em 1em;
+    border-radius: 0 0 2em 2em;
+    z-index: 1;
+    left:-35%;
+    position: absolute;
+
+    transition: opacity 0.5s;
+}
+.stamina-info.toggle{
+    visibility: visible;
+    opacity: 1;
+}
 
 
 

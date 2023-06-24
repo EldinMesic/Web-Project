@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+require_once 'database/db_manager.php';
+
+
 if(!isset($_SESSION['user'])){
     header("Location: index.php?error=Please Log in.");
     exit();
@@ -38,8 +41,13 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
         </div>
         <div class="account-pages">
             <a href="logout.php">Log Out</a>
-            <span><?php echo $_SESSION['user']['username']; ?></span>
-        </div>
+            <span id="username-text"><?php echo $_SESSION['user']['username']; ?></span>
+            <div class="tooltip">
+                <span id="stamina-text" onmouseout="removeStaminaInfo();" onmouseenter="addStaminaInfo();"></span>
+                <span class="stamina-info"></span>
+            </div>
+            
+        </div>  
     </div>
 
     
@@ -60,6 +68,9 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
 
 
 
+    <script>
+        initializeStamina(<?php echo $database->getStamina($_SESSION['user']['id']); ?>);
+    </script>
 
 </body>
 </html>

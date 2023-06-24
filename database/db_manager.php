@@ -10,6 +10,8 @@ if(session_status() !== PHP_SESSION_ACTIVE){
 class DatabaseManager{
     protected $connection;
     protected $absPath = "http://localhost/Web-Project/";
+    protected $regenTime = 300;
+    protected $maxStamina = 100;
 
 	public function __construct($dbhost = 'localhost', $dbuser = 'root', $dbpass = '', $dbname = 'pokebuy') {
 		$this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
@@ -38,8 +40,6 @@ class DatabaseManager{
 
     return json_encode($pokemonArray);
   }
-    
-
   public function getPokemonById($id){
     $id = $this->connection->real_escape_string($id);
 
@@ -50,7 +50,6 @@ class DatabaseManager{
 
     return json_encode($pokemon);
   }
- 
   public function getPokemonCount(){
     $sql = "SELECT COUNT(id)
             FROM pokemons";
@@ -60,6 +59,7 @@ class DatabaseManager{
     return $count['COUNT(id)'];
 
   }
+
 
 
   public function loginUser($username, $password){
@@ -90,7 +90,6 @@ class DatabaseManager{
 		}
 
   }
-
   public function registerUser($username, $email, $password){
     $username = $this->connection->real_escape_string($username);
     $email = $this->connection->real_escape_string($email);
@@ -118,6 +117,7 @@ class DatabaseManager{
 		}
 
   }
+
 
 
   public function isEmailRegistered($email){
@@ -153,7 +153,18 @@ class DatabaseManager{
     return $result->num_rows===1;
 
   }
+  public function getUser($id){
+    $id = $this->connection->real_escape_string($id);
 
+    $sql = "SELECT *
+            FROM users
+            WHERE id='$id'";
+    $result = $this->connection->query($sql);
+
+    $user = $result->fetch_assoc();
+    return $user;
+
+  }
   
 
   public function finishTutorial($userID, $pokemonID){
@@ -192,12 +203,49 @@ class DatabaseManager{
 
   }
 
+
+
+
   public function catchPokemon($userID, $pokemonID, $isShiny){  
     $sql = "INSERT INTO user_pokemon (userID, pokemonID, isShiny) 
             VALUES ($userID, $pokemonID, $isShiny)";
     $result = $this->connection->query($sql);
 
     return $result;
+  }
+
+
+
+  public function getStamina($userID){
+    $user = $this->getUser($userID);
+    $timeDiff = time() - strtotime($user['last_update']);
+    
+    $regenStamina = $timeDiff/$this->regenTime;
+    $stamina = $regenStamina + $user['stamina'];
+
+    return min($stamina, $this->maxStamina);
+  }
+
+
+
+  public function useStamina($userID, $stamina){
+    $user = $this->getUser($userID);
+    $currStamina = $this->getStamina($userID);
+    $newStamina = $currStamina-$stamina;
+    if($newStamina<0){
+      return 0;
+    }
+
+    $newTime = date('Y-m-d H:i:s');
+
+    $sql = "UPDATE users
+            SET stamina={$newStamina}, last_update='{$newTime}'
+            WHERE id=$userID";
+    
+    $result = $this->connection->query($sql);
+
+    return $result;
+
   }
 
 

@@ -44,7 +44,8 @@ if($_SESSION['user']['hasFinishedTutorial']){
         </div>
         <div class="account-pages">
             <a href="../logout.php">Log Out</a>
-            <span><?php echo $_SESSION['user']['username']; ?></span>
+            <span id="username-text"><?php echo $_SESSION['user']['username']; ?></span>
+            <span id="stamina-text"></span>
         </div>
     </div>
 
