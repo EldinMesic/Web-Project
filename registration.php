@@ -28,8 +28,8 @@ require_once "database/db_manager.php";
     <div class="navbar">
         <div class="main-pages">
             <a href="home.php">Home</a>
-            <a href="pokedex.php">Pokedex</a>
-            <a href="explore.php">Explore</a>
+            <a href="pokedex/pokedex.php">Pokedex</a>
+            <a href="explore/explore.php">Explore</a>
         </div>
         <div class="account-pages">
             <a href="index.php">Log In</a>

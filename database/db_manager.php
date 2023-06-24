@@ -40,6 +40,25 @@ class DatabaseManager{
 
     return json_encode($pokemonArray);
   }
+  public function getUserPokemons($userID){
+    $sql = "SELECT pokemonID, isShiny
+            FROM user_pokemon
+            WHERE useriD='$userID'";
+    $results = $this->connection->query($sql);
+
+    $userPokemons = array();
+
+    while($row = $results->fetch_assoc()){      
+      $userPokemons[] = array(
+        "pokemonID" => $row['pokemonID'],
+        "isShiny" => boolval($row['isShiny'])
+      );
+    }
+
+    return json_encode($userPokemons);
+
+    
+  }
   public function getPokemonById($id){
     $id = $this->connection->real_escape_string($id);
 

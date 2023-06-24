@@ -33,8 +33,8 @@ if(isset($_SESSION['user'])){
     <div class="navbar">
     <div class="main-pages">
             <a href="home.php">Home</a>
-            <a href="pokedex.php">Pokedex</a>
-            <a href="explore.php">Explore</a>
+            <a href="pokedex/pokedex.php">Pokedex</a>
+            <a href="explore/explore.php">Explore</a>
         </div>
         <div class="account-pages">
             <a href="registration.php">Sign Up</a>
