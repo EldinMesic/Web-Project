@@ -69,7 +69,9 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
 
 
     <script>
-        initializeStamina(<?php echo $database->getStamina($_SESSION['user']['id']); ?>);
+        var staminaFloat = <?php echo $database->getStamina($_SESSION['user']['id']); ?>;
+        initializeStamina(staminaFloat);
+        initializeWindowTracker();
     </script>
 
 </body>

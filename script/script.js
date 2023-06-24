@@ -106,6 +106,13 @@ function initializeStamina(staminaFloat){
 
 
 }
+function initializeWindowTracker(){
+    document.addEventListener('visibilitychange', () => {
+        if(!document.hidden){
+            location.reload();
+        }
+    });
+}
 
 
 function parseToRegenTime(seconds){
