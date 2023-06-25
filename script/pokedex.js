@@ -6,7 +6,7 @@ const pppDropDown = document.getElementById("pppDropdown");
 const sbDropDown = document.getElementById("sbDropdown");
 const topButton = document.getElementById("myBtn");
 
-var amountOfItemsPerPage = 10;
+var amountOfItemsPerPage = 12;
 var currentPage = 1;
 
 var items = [];

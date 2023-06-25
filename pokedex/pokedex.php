@@ -78,10 +78,10 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
                 <g>
                     <span>Per Page:</span>
                     <select class="form-select " id="pppDropdown">
-                    <option >10</option>
-                    <option >20</option>
-                    <option >50</option>
-                    <option >100</option>
+                    <option >12</option>
+                    <option >24</option>
+                    <option >48</option>
+                    <option >96</option>
                     <option value="151">All</option>
                     </select>
                 </g>

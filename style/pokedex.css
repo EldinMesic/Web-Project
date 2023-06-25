@@ -291,16 +291,33 @@ g span{
 
 
 @media screen and (max-width: 768px) {
-    .page-buttons-container{
+    .page-buttons-container, .item-container{
         flex-direction: column;
     }
     .dropdown, .page-buttons-container{
         text-align: center;
     }
-    .items-grid {
+    .items-grid{
         margin: 5%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
         grid-gap: 1em;
+    }
+
+    .info-panel{
+        width:auto;
+        height: auto;
+        margin: 0 0.7em -0.4em 0.7em;
+        background-color: white;
+        flex-direction: row;
+        text-align: center;
+    }
+    .info-panel g p{
+        text-align: center;
+    }
+    #stats-panel{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax( 30%,1fr));
+        margin:0;
     }
 }
