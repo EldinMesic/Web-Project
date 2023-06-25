@@ -151,7 +151,6 @@ sbDropDown.addEventListener('change', () => {
 
 function loadPokemon(pokemons, userPokemons){
 
-    console.log(userPokemons[0]);
     const pokemonArray = pokemons.map((pokemon => ({
         id: pokemon.id,
         name: pokemon.name,

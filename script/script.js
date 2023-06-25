@@ -59,12 +59,12 @@ function createCartItem(item){
 function initializeStamina(staminaFloat){
     clearInterval(staminaInterval);
 
+    startTime = new Date();
+    startingStamina = staminaFloat;
+
     const staminaContainer = document.querySelector("#stamina-text"); 
     const staminaInfo = document.querySelector(".stamina-info");
     
-
-    const regenTime = 300;
-    const maxStamina = 100;
 
     var stamina = Math.floor(staminaFloat);
 
@@ -109,7 +109,13 @@ function initializeStamina(staminaFloat){
 function initializeWindowTracker(){
     document.addEventListener('visibilitychange', () => {
         if(!document.hidden){
-            location.reload();
+            var currTime = new Date();
+            var timeDiff = (currTime-startTime) / 1000;
+            console.log(timeDiff);
+
+            var newStamina = (timeDiff/regenTime) + startingStamina;
+            if(newStamina > 100) newStamina=100;
+            initializeStamina(newStamina);
         }
     });
 }
@@ -150,4 +156,10 @@ window.onscroll = function() {
 };
 
 
+const regenTime = 300;
+const maxStamina = 100;
+
+
 var staminaInterval;
+var startTime;
+var startingStamina;

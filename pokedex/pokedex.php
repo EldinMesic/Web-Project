@@ -14,6 +14,7 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
     exit();
 }
 
+
 ?>
 
 
@@ -22,7 +23,6 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
 <head>
 	<title>Pokopy</title>
 	<link rel="stylesheet" href="../style/style.css">
-
     <link rel="stylesheet" href="../style/pokedex.css">
     <script src="../script/script.js"></script>
     
@@ -121,8 +121,7 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
 
     <script src="../script/pokedex.js"></script>
     <script>
-        var staminaFloat = <?php echo $database->getStamina($_SESSION['user']['id']); ?>;
-        initializeStamina(staminaFloat);
+        initializeStamina(<?php echo $database->getStamina($_SESSION['user']['id']); ?>);
         initializeWindowTracker();
 
         var pokemons = <?php echo $database->getPokemons(); ?>;
