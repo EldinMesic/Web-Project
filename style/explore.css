@@ -1,0 +1,77 @@
+
+
+.location{
+    display: flex;
+    flex-direction: column;
+    margin:1em auto;
+    width: 40%;
+    border-radius: 4em;
+    border-color: black;
+    border-style: solid;
+}
+
+
+#Forest{
+    background: lightgreen;
+}
+#Coast{
+    background: seashell;
+}
+#Glacier{
+    background: lightblue;
+}
+#Cave{
+    background: slategray;
+}
+#Volcano{
+    background: salmon;
+}
+
+
+.background-image{
+    border-radius: 3.8em 3.8em 0 0;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 190%;
+    background-color: var(--secondary-color);
+    box-shadow: inset 0 0 0 0 grey;
+}
+
+.background-image h2{
+    margin: 0.5em 0;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: -1px 1px 0 white,
+				  1px 1px 0 white,
+				 1px -1px 0 white,
+				-1px -1px 0 white;
+}
+.location h3{
+    margin: 0.5em auto;
+}
+
+
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+form button{
+    color:white;
+    font-size: large;
+    border:none;
+    cursor: pointer;
+    margin: 0.7em auto;
+    padding: 0.6em 3em;
+    border-radius:2em;
+    background: var(--primary-color);
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .location{
+        width: 70%;
+    }
+}

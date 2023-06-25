@@ -4,14 +4,23 @@ session_start();
 require_once '../database/db_manager.php';
 
 
+
+if(!isset($_POST['location'])  || !isset($_POST['cost'])){
+    header("Location: explore.php");
+    exit();
+}
 if(!isset($_SESSION['user'])){
-    header("Location: ../index.php?error=Please Log in.");
+    header("Location: ../index.php?error=Invalid Session");
     exit();
 }
-if(!$_SESSION['user']['hasFinishedTutorial']){
-    header("Location: ../tutorial/tutorial.php");
-    exit();
-}
+
+
+
+//if( !($database->useStamina($_SESSION['user']['id'], $_POST['cost'])) ){
+//    header("Location: explore.php?error=You don't have enough stamina to explore that area");
+//    exit();
+//}
+
 
 ?>
 
@@ -35,12 +44,12 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
     <div class="navbar">
         
         <div class="main-pages">
-            <a href="../home.php">Home</a>
-            <a href="../pokedex/pokedex.php">Pokedex</a>
+            <span class="current-page-button">Home</span>
+            <span class="current-page-button">Pokedex</span>
             <span class="current-page-button">Explore</span>
         </div>
         <div class="account-pages">
-            <a href="../logout.php">Log Out</a>
+            <span class="current-page-button" style="float:right;">Log Out</span>
             <span id="username-text"><?php echo $_SESSION['user']['username']; ?></span>
             <div class="tooltip">
                 <span id="stamina-text" onmouseout="removeStaminaInfo();" onmouseenter="addStaminaInfo();"></span>
@@ -64,9 +73,14 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
             }
         ?>
 
-
-        <div class="explore-container">
-
+        
+        <div class="pokemon-container">
+            <form action="catchPokemon.php" method="post">
+                <button type="submit" name="pokemonID" value="">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" />
+                </button>
+            </form>
+            
         </div>
 
 
@@ -79,7 +93,7 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
         initializeStamina(staminaFloat);
         initializeWindowTracker();
 
-        initializeLocations(<?php echo $database->getPokemonsInLocations(); ?>);
+        explorePokemons(<?php echo $database->getPokemonsInLocations(); ?>);
     </script>
 
 </body>
