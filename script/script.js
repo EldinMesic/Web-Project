@@ -81,11 +81,11 @@ function initializeStamina(staminaFloat){
     var timeUntilFullRegen = parseToRegenTime(secondsUntilFullRegen);
     
 
-    staminaContainer.innerHTML = `Stamina: ${stamina} /100`;
+    staminaContainer.innerHTML = `Stamina: ${stamina} /${maxStamina}`;
     staminaInfo.innerHTML = `Time until next regen: ${timeUntilRegen}<br>Time until full regen: ${timeUntilFullRegen}`;
 
     staminaInterval = setInterval(() => {
-        if(stamina<100){
+        if(stamina<maxStamina){
             secondsUntilFullRegen--;
             secondsUntilRegen--;
 
@@ -98,7 +98,7 @@ function initializeStamina(staminaFloat){
             timeUntilFullRegen = parseToRegenTime(secondsUntilFullRegen);
             timeUntilRegen = parseToRegenTime(secondsUntilRegen);
 
-            staminaContainer.innerHTML = `Stamina: ${stamina} /100`;
+            staminaContainer.innerHTML = `Stamina: ${stamina} /${maxStamina}`;
             staminaInfo.innerHTML = `Time until next regen: ${timeUntilRegen}<br>Time until full regen: ${timeUntilFullRegen}`;
         }
         
@@ -113,7 +113,7 @@ function initializeWindowTracker(){
             var timeDiff = (currTime-startTime) / 1000;
 
             var newStamina = (timeDiff/regenTime) + startingStamina;
-            if(newStamina > 100) newStamina=100;
+            if(newStamina > maxStamina) newStamina=maxStamina;
             initializeStamina(newStamina);
         }
     });
@@ -155,8 +155,8 @@ window.onscroll = function() {
 };
 
 
-const regenTime = 300;
-const maxStamina = 100;
+const regenTime = 240;
+const maxStamina = 200;
 
 
 var staminaInterval;

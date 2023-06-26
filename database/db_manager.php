@@ -10,8 +10,8 @@ if(session_status() !== PHP_SESSION_ACTIVE){
 class DatabaseManager{
     protected $connection;
     protected $absPath = "http://localhost/Web-Project/";
-    protected $regenTime = 300;
-    protected $maxStamina = 100;
+    protected $regenTime = 240;
+    protected $maxStamina = 200;
 
 	public function __construct($dbhost = 'localhost', $dbuser = 'root', $dbpass = '', $dbname = 'pokebuy') {
 		$this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
