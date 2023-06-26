@@ -2,18 +2,17 @@
 session_start();
 
 require_once '../database/db_manager.php';
-$absPath = "http://localhost/Web-Project/";
 
 
 if(!isset($_POST['pokemonID'])){
-    header("Location: {$absPath}pokedex/pokedex.php?message=Invalid Access, please try again");
+    header("Location: ../pokedex/pokedex.php?message=Invalid Access, please try again");
 }
 if(!isset($_SESSION['user'])){
-    header("Location: {$absPath}index.php?error=Please Log in.");
+    header("Location: ../index.php?error=Please Log in.");
     exit();
 }
 if(!$_SESSION['user']['hasFinishedTutorial']){
-    header("Location: {$absPath}tutorial/tutorial.php");
+    header("Location: ../tutorial/tutorial.php");
     exit();
 }
 

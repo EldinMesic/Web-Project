@@ -33,19 +33,19 @@ function findBackgroundImage(location){
 
     switch (location) {
         case 1:
-            return "url('http://localhost/Web-Project/images/forest.jpg')";
+            return "url('../images/forest.jpg')";
         case 2:
-            return "url('http://localhost/Web-Project/images/coast.jpg')";
+            return "url('../images/coast.jpg')";
         case 3:
-            return "url('http://localhost/Web-Project/images/glacier.jpg')";
+            return "url('../images/glacier.jpg')";
         case 4:
-            return "url('http://localhost/Web-Project/images/cave.jpg')";
+            return "url('../images/cave.jpg')";
         case 5:
-            return "url('http://localhost/Web-Project/images/volcano.jpg')";
+            return "url('../images/volcano.jpg')";
         case 6:
-            return "url('http://localhost/Web-Project/images/void1.png')";
+            return "url('../images/void1.png')";
         default:
-            return "url('http://localhost/Web-Project/images/unknownPokemon.jpg')";
+            return "url('../images/unknownPokemon.jpg')";
     }
 
 

@@ -6,11 +6,11 @@ $absPath = "http://localhost/Web-Project/";
 
 
 if(!isset($_SESSION['user'])){
-    header("Location: {$absPath}index.php?error=Please Log in.");
+    header("Location: ../index.php?error=Please Log in.");
     exit();
 }
 if(!$_SESSION['user']['hasFinishedTutorial']){
-    header("Location: {$absPath}tutorial/tutorial.php");
+    header("Location: ../tutorial/tutorial.php");
     exit();
 }
 
