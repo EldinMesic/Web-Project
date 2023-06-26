@@ -16,10 +16,10 @@ if(!isset($_SESSION['user'])){
 
 
 
-//if( !($database->useStamina($_SESSION['user']['id'], $_POST['cost'])) ){
-//    header("Location: explore.php?error=You don't have enough stamina to explore that area");
-//    exit();
-//}
+if( !($database->useStamina($_SESSION['user']['id'], $_POST['cost'])) ){
+    header("Location: explore.php?error=You don't have enough stamina to explore that area");
+    exit();
+}
 
 
 ?>
@@ -75,12 +75,6 @@ if(!isset($_SESSION['user'])){
 
         
         <div class="pokemon-container">
-            <form action="catchPokemon.php" method="post">
-                <button type="submit" name="pokemonID" value="">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png" />
-                </button>
-            </form>
-            
         </div>
 
 
@@ -93,7 +87,10 @@ if(!isset($_SESSION['user'])){
         initializeStamina(staminaFloat);
         initializeWindowTracker();
 
-        explorePokemons(<?php echo $database->getPokemonsInLocations(); ?>);
+
+        var pokemonsInLocation = <?php echo $database->getPokemonsInLocation($_POST['location'])?>
+
+        explorePokemons(pokemonsInLocation);
     </script>
 
 </body>

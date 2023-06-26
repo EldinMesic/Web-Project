@@ -111,7 +111,6 @@ function initializeWindowTracker(){
         if(!document.hidden){
             var currTime = new Date();
             var timeDiff = (currTime-startTime) / 1000;
-            console.log(timeDiff);
 
             var newStamina = (timeDiff/regenTime) + startingStamina;
             if(newStamina > 100) newStamina=100;

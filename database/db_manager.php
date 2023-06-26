@@ -78,6 +78,8 @@ class DatabaseManager{
     return $count['COUNT(id)'];
 
   }
+
+
   public function getPokemonsInLocations(){
 
     $pokemonsInLocations = array();
@@ -95,6 +97,19 @@ class DatabaseManager{
 
     return json_encode($pokemonsInLocations);
   }
+  public function getPokemonsInLocation($location){
+    $sql = "SELECT * FROM pokemons WHERE location =$location OR location=6";
+    $result = $this->connection->query($sql);
+      
+    $pokemonsInLocation = array();
+    while($row = $result->fetch_assoc()){
+      $pokemonsInLocation[] = $row;
+    }
+
+    return json_encode($pokemonsInLocation);
+  }
+
+
 
 
   public function loginUser($username, $password){

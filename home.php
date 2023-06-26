@@ -64,6 +64,12 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
             }
         ?>
 
+        <div style="display:flex; flex-direction:column; margin: 2em; justify-content: center;">
+            <img style="width:14%; margin:auto 43%" src="images/professorOak.png"/>
+            <h1>Go to the Pokedex tab to see all the pokemons you have caught or go to the Explore tab to use up your stamina and catch some Pokemons</h1>
+        </div>
+
+
 	<div>
 
 

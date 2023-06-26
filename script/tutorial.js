@@ -91,7 +91,7 @@ function showPokemon(){
     setTimeout(() => {
         pokemons[2].style.opacity = 1;
         pokemons[2].addEventListener('mouseover', () => pokemonHover(pokemons[2].dataset.name));
-        pokemons[2].addEventListener('click', () => selectPokemon("Squirtle"), 7);
+        pokemons[2].addEventListener('click', () => selectPokemon("Squirtle", 7));
     },3000);
 
 }
