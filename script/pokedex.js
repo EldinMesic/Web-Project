@@ -238,7 +238,7 @@ function createPokemon(item){
             <h2 style="text-align:center">${itemName}</h2>
             <p>ID: ${item.id}</p>
             <form action="pokemonDetails.php" method="post">
-            <button class="details-btn" type="submit" name="pokemonID" value="${item.id}">See Details</button>
+            <button class="details-btn" type="submit" name="pokemonID" value="${item.id}" onClick="pppDropdown.value='12'; sbDropdown.value='Pokemon ID';">See Details</button>
             </form>
             <br>
         `;

@@ -90,7 +90,7 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
             <g class = "dropdown">
                 <span>Sort By:</span>
                 <select class="form-select " id="sbDropdown">
-                    <option value="id">Pokemon ID</option>
+                    <option value="id" >Pokemon ID</option>
                     <option value="name">Pokemon Name</option>
                     <option value="count">Number Caught</option>
                     <option value="location">Location</option>
@@ -121,6 +121,7 @@ if(!$_SESSION['user']['hasFinishedTutorial']){
 
     <script src="../script/pokedex.js"></script>
     <script>
+
         initializeStamina(<?php echo $database->getStamina($_SESSION['user']['id']); ?>);
         initializeWindowTracker();
 
